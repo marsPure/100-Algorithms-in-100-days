@@ -32,12 +32,15 @@ public static void main (String[] args){
   while (!StdIn.isEmpty()){
     int p = StdIn.readInt();
     int q = StdIn.readInt();
-    if (!uf.connected(p,q){
+    if (!uf.connected(p,q))
+    {
       uf.union(p,q);
       stdOut.println(p+" "+q);
     }
  }
+        
 }
+
         
   // QUICK FIND
   //     0  1  2  3  4  5  6  7  8  9   
@@ -68,5 +71,87 @@ public static void main (String[] args){
           }
           
 
- 
+ // Quick Union
+//     0  1  2  3  4  5  6  7  8  9   
+//   [ 0, 1, 9, 4, 9, 6, 6, 7, 8, 9]  
+
+// id[i] is parent of i 
+// i is root if id[i] == i
+
+          public class QuickUnionUF()
+          {
+            private int[] id;
+            public QuickUnionUF(int n)
+            {
+              id= new int[n];
+              for (int i=0; i<n ; i++)
+                id[i]=i;
+            }
+            public bool connected(int p , int q)
+            {
+              
+              return root(p) == root(q);
+            }
+            public void union(int p, int q)
+            {
+              p = root(p);
+              q = root(q);
+              id[p]=q;
+            }
+            private int root(int p)
+            {
+              while (id[p]!=p)
+                p=id[p];
+              return p;
+            }
+          }
+                
+            
+   // Quick-Union improvements
+   // just make sure the tree is more balanced and flatten it when it is accessed.
+            public class QuickUnionFastUF()
+            {
+              private int[] id;
+              public QuickUnionUF(int n)
+              {
+                id= new int[n];
+                for (int i=0; i<n ; i++)
+                  id[i]=i;
+              }
+            
+              public bool connected(int p , int q)
+              {
+                return root(p) == root(q);
+              }
+              public void union(int p, int q)
+              {
+                Root rp = root(p);
+                Root rq = root(q);
+                if(rp.i>rq.i) id[rq.value]=rp.value;
+                else if[rp.value]=rq.value;
+              }
+              private Root root(int p)
+              {
+                int i=0;
+                while (id[p]!=p)
+                {
+                  id[p]=id[id[p]];//to flatten the tree while we are accessing it
+                  p=id[p];
+                  i++;
+                }
+                return new Root(p,i);
+              }
+                static class Root()
+              {
+                int value;
+                int i;
+                Root(int value, int i)
+                {
+                  this.value=value;
+                  this.i=i;
+                }
+              }
+            }
+                
+    
  
