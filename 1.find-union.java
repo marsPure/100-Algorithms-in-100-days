@@ -78,7 +78,7 @@ public static void main (String[] args){
 // id[i] is parent of i 
 // i is root if id[i] == i
 
-          public class QuickUnionUF()
+          public class QuickUnionUF
           {
             private int[] id;
             public QuickUnionUF(int n)
@@ -109,7 +109,7 @@ public static void main (String[] args){
             
    // Quick-Union improvements
    // just make sure the tree is more balanced and flatten it when it is accessed.
-            public class QuickUnionFastUF()
+            public class QuickUnionFastUF
             {
               private int[] id;
               public QuickUnionUF(int n)
@@ -128,7 +128,7 @@ public static void main (String[] args){
                 Root rp = root(p);
                 Root rq = root(q);
                 if(rp.i>rq.i) id[rq.value]=rp.value;
-                else if[rp.value]=rq.value;
+                else id[rp.value]=rq.value;
               }
               private Root root(int p)
               {
@@ -152,6 +152,85 @@ public static void main (String[] args){
                 }
               }
             }
+              
+          
+          
+          
+          // Sample problem
+          
+          /*
+          Social network connectivity. Given a social network containing n members and a log file containing m timestamps at which times 
+          pairs of members formed friendships, design an algorithm to determine the earliest time at which all members are connected
+          (i.e., every member is a friend of a friend of a friend ... of a friend). Assume that the log file is sorted by timestamp and that 
+          friendship is an equivalence relation. The running time of your algorithm should be mlogn or better and use extra space proportional 
+          to n.
+          */
+          
+          public class Connectivity
+          {
+            QuickUnionFastUF uf;
+            int cnt=0;
+            public int shortest(int n, int[] m , int[] p, int[] q)
+            {
+              uf = new QuickUnionFastUF(n);
+              for(int i; i<m.length; i++)
+              {
+                if(!uf.connected (p,q)){
+                  uf.union(p,q)
+                  cnt++;
+                  if(cnt>n) return m[i];
+                }
                 
-    
- 
+              }
+            }
+          }
+    /*
+    Union-find with specific canonical element.
+    Add a method find() to the union-find data type so that find(i) returns the largest element in the connected component containing i.
+    The operations, union(), connected(), and find() should all take logarithmic time or better.
+
+    For example, if one of the connected components is {1,2,6,9}, then the find() method should return 9 for each of the four 
+    elements in the connected components.
+    */
+          
+          public class QuickUnionFastUF
+            {
+              private int[] id;
+              public QuickUnionUF(int n)
+              {
+                id= new int[n];
+                for (int i=0; i<n ; i++)
+                  id[i]=i;
+              }
+            
+              public bool connected(int p , int q)
+              {
+                return root(p) == root(q);
+              }
+              public void union(int p, int q)
+              {
+                if(p>q) id[root(q)]=id[root(p)];
+                else  id[root(p)]=id[root(q)];
+              }
+              private Root root(int p)
+              {
+                while (id[p]!=p)
+                {
+                  id[p]=id[id[p]];//to flatten the tree while we are accessing it
+                  p=id[p];
+                }
+                return p;
+              }
+              public int find(int p)
+              {
+                return root(p); 
+              }
+            }
+        /*
+        Successor with delete. Given a set of n integers S={0,1,...,n−1} and a sequence of requests of the following form:
+
+        Remove x from S
+        Find the successor of x: the smallest y in S such that y≥x.
+        design a data type so that all operations (except construction) take logarithmic time or better 
+        */
+        
