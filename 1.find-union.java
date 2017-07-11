@@ -233,4 +233,32 @@ public static void main (String[] args){
         Find the successor of x: the smallest y in S such that y≥x.
         design a data type so that all operations (except construction) take logarithmic time or better 
         */
-        
+        //there is an easier way than union-find
+          public class successor
+          {
+            int[] id;
+            public successor(int n)
+            {
+              id = new int[n]
+              for(int i=0;i<n;i++)
+                int[i]=i;
+            }
+            // 0 1 2 4 5 6 6 
+            public int remove(int p)
+            {
+                id[p]=suc(p+1);
+                return id[p];
+            }
+            public int suc(int p)
+            {
+              while(id[p] != p)
+              {
+                id[p]=id[id[p]];
+                p=id[p];
+              }
+              return p;
+            }
+            
+            
+          
+         
