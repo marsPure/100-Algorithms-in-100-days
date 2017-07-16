@@ -49,7 +49,7 @@ public class StackOfString
 	private int i=0;
 	public StackOfString(int n)
 	{
-                s=new String[n];
+        	s=new String[n];
 	}
 	public StackOfStringI()
 	{
