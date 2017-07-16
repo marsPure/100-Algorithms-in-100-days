@@ -23,7 +23,7 @@ public class QueueOfString
   
   public boolean isEmpty()
   {
-   return last==null; 
+   return first==null; 
   }
     
   private class Node
