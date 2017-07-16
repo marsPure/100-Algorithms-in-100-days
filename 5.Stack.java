@@ -75,10 +75,10 @@ public class StackOfString
     
 	private void resize(int n)  
 	{
-		String[] temp= new String[n];
-		for(int i=0;i<s.length;i++)
-			temp[i]=s[i];
-		s=temp;
+        String[] temp= new String[n];
+        for(int i=0;i<s.length;i++)
+                temp[i]=s[i];
+        s=temp;
 	}
  
 }
