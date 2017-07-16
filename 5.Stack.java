@@ -12,10 +12,10 @@ public class StackOfString
   String pop()
   {
    	Node f = this.first;
-		if (f==null) return null;
-		if (f.next==null) this.first=null;
-		else this.first = f.next;
-		return f.item;
+        if (f==null) return null;
+        if (f.next==null) this.first=null;
+        else this.first = f.next;
+        return f.item;
   }
     
   boolean isEmpty()
@@ -49,7 +49,7 @@ public class StackOfString
 	private int i=0;
 	public StackOfString(int n)
 	{
-		s=new String[n];
+                s=new String[n];
 	}
 	public StackOfStringI()
 	{
