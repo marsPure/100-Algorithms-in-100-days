@@ -45,11 +45,12 @@ public class StackOfString
 public class StackOfString
 {
 	
-  private String[] s;
+    private String[] s;
 	private int i=0;
-	public StackOfString(int n)
+	
+    public StackOfString(int n)
 	{
-        	s=new String[n];
+        s=new String[n];
 	}
 	public StackOfStringI()
 	{
@@ -57,15 +58,16 @@ public class StackOfString
 	}
   void push(String item)
   {
-		if(i==s.length) resize(2 * s.length);
-    s[i++]=item;
+      if(i==s.length) resize(2 * s.length);
+      s[i++]=item;
   }
   
   String pop()
   {
-  		String item= s[--i];
-			s[i]=null;
-			return item;
+      if( i>0 && i == s.length/4) resize(s.length/2);
+      String item= s[--i];
+      s[i]=null;
+      return item;
 	}
     
   boolean isEmpty()
@@ -73,11 +75,11 @@ public class StackOfString
     return i==0;
   }
     
-	private void resize(int n)  
+  private void resize(int n)  
 	{
         String[] temp= new String[n];
         for(int i=0;i<s.length;i++)
-                temp[i]=s[i];
+        temp[i]=s[i];
         s=temp;
 	}
  
