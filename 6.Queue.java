@@ -37,3 +37,58 @@ public class QueueOfString
     }
   }
 }
+
+//array implementation
+public class QueueOfString
+{
+  private int last=0,first=0,n=0;
+  //   private boolean fc=false,lc=false;
+  private String[] s=new String[1];
+  
+  pubilc void enqueue(String item)
+  {
+    if(n==s.length) this.resize(s.length*2);
+    s[last++]=item;
+    if(last>=s.length)
+    {
+      this.last= 0;
+    //       fl=!fl;
+    }
+    n++;
+  }
+  
+  public String dequeue()
+  {
+    if(n < s.length/4)   resize(s.length/2);
+    String t= s[first];
+    s[first++]=null;
+    if(first>=s.length)
+    {
+      this.first= 0;
+    //       fc=!fc;
+    }
+    n--
+    return t;
+  }
+  
+  public boolean isEmpty()
+  {
+//    return fc==fl && first==last; 
+    return n==0;
+  }
+  
+  private void resize(int capacity){
+    String[] t=new String[capacity];
+    int i = first , m=n;
+    while(m-->0)
+    {
+      t[i]=s[i];
+      i++;
+      if(i>=s.length)
+        i=0;
+    }
+    first = 0;
+    last = i;
+    
+  }
+}
