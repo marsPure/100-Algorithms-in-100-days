@@ -1,9 +1,29 @@
 
 //linkedList implementation
-public class QueueOfString
+public class Queue<Item> implements Iterable<Item>
 {
   private Node last,first;
   
+  public Iterator<Item> iterator()
+  {
+    return new ListIterator();
+  }
+  
+  private class ListIterator implements Iterator<Item>
+  {
+    private Node current=first;
+    public boolean hasNext() { return current != null;}
+    public void remove() { /* throw unsupportedOperationException */}
+    public Item next()
+    {
+      Item item = current.item;
+      current= current.next;
+      return item;
+    }
+  
+  
+  
+  }
   pubilc void enqueue(String item)
   {
     Node oldLast=last;
